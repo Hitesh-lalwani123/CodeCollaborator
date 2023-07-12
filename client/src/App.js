@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+// import EditorComponent from "./EditorComponent";
 import Editor from "@monaco-editor/react";
-
-function onChange(newValue) {
-  console.log("change", newValue);
-}
 
 const socket = io.connect("http://localhost:3001");
 
@@ -20,27 +17,39 @@ function App() {
   socket.on("user-change", (data) => {
     setUsers(data);
   });
+  const [name, setName] = useState("No Name Entered");
 
-
+  const onChange = (e) => {
+    setMessageRecieved(e.target.value);
+    socket.emit("send-message", e.target.value);
+  };
   socket.on("new-connection", (users) => {
     setMessageRecieved(users);
   });
 
   return (
     <div className="App container">
-      <textarea
-        type="text"
-        style={{
-          width: "1000px",
-          height: "100px",
-          border: "2px solid red",
-        }}
-        onChange={(e) => {
-          setMessageRecieved(e.target.value);
-          socket.emit("send-message", e.target.value);
-        }}
-        value={messageReceived}
-      />
+      <h2>{name}</h2>
+
+      <div className="flex flex-row space-x-4 items-start px-4 py-4">
+        <div className="flex flex-col w-full h-full justify-start items-end">
+          <Editor
+            className="text-xl"
+            height="91vh"
+            defaultLanguage="python"
+            value={messageReceived}
+            theme="vs-dark"
+            options={{ fontSize: 20 }}
+            onChange={(e) => {
+              console.log("dsfa");
+              console.log(e);
+
+              setMessageRecieved(e);
+              socket.emit("send-message", e);
+            }}
+          />
+        </div>
+      </div>
 
       <h1>Users: {users}</h1>
     </div>
