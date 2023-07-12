@@ -27,15 +27,21 @@ function App() {
     setMessageRecieved(users);
   });
 
+  const style = {
+    background:'beige',
+    width:'80%'
+    ,display:'flex',
+  }
   return (
     <div className="App container">
-      <h2>{name}</h2>
+      <div style = {style}>Your Personalised Code collaborator</div>
 
       <div className="flex flex-row space-x-4 items-start px-4 py-4">
         <div className="flex flex-col w-full h-full justify-start items-end">
           <Editor
             className="text-xl"
-            height="91vh"
+            height="85vh"
+            width={'80%'}
             defaultLanguage="python"
             value={messageReceived}
             theme="vs-dark"
@@ -51,7 +57,7 @@ function App() {
         </div>
       </div>
 
-      <h1>Users: {users}</h1>
+      <div>Active Users Connected: {users}</div>
     </div>
   );
 }
