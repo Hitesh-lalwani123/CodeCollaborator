@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors());
 const io = new Server(server, {
   cors: {
-    origin: "https://code-collaborator-beta.vercel.app/",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
