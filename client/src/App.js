@@ -42,7 +42,7 @@ function App() {
             className="text-xl"
             height="85vh"
             width={'80%'}
-            defaultLanguage="python"
+            defaultLanguage="javascript"
             value={messageReceived}
             theme="vs-dark"
             options={{ fontSize: 20 }}
