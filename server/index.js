@@ -13,6 +13,10 @@ const io = new Server(server, {
   },
 });
 
+
+app.get('/',()=>{
+  console.log('on Homepage')
+})
 let mydata = "";
 let users = 0;
 io.on("connection", (socket) => {

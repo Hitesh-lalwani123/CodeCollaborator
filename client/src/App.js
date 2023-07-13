@@ -17,12 +17,8 @@ function App() {
   socket.on("user-change", (data) => {
     setUsers(data);
   });
-  const [name, setName] = useState("No Name Entered");
 
-  const onChange = (e) => {
-    setMessageRecieved(e.target.value);
-    socket.emit("send-message", e.target.value);
-  };
+
   socket.on("new-connection", (users) => {
     setMessageRecieved(users);
   });
