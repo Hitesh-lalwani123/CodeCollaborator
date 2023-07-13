@@ -3,7 +3,7 @@ import io from "socket.io-client";
 // import EditorComponent from "./EditorComponent";
 import Editor from "@monaco-editor/react";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://code-collaborator-api.vercel.app/");
 
 function App() {
   const [users, setUsers] = useState();
