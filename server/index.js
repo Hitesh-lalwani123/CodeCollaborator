@@ -14,8 +14,8 @@ const io = new Server(server, {
 });
 
 
-app.get('/',()=>{
-  console.log('on Homepage')
+app.get('http://localhost:3000',(req,res)=>{
+  res.json({message:"api working correctly"})
 })
 let mydata = "";
 let users = 0;
